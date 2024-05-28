@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #069f4b;">
+    <div class="container">
+        <a class="navbar-brand text-uppercase mx-auto" href="#">EISEI INNOVATION</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5 text-center mb-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <a asp-action="Roles" asp-controller="Home" class="text-decoration-none">
+                        <h3 class="card-title text-uppercase">ROLES</h3>
+                        <img src="~/images/roles.png" alt="" class="img-fluid mx-auto d-block mb-3 w-25">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-center mb-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <a asp-action="Usuarios" asp-controller="Home" class="text-decoration-none">
+                        <h3 class="card-title text-uppercase">USUARIOS</h3>
+                        <img src="~/images/usuarios.png" alt="" class="img-fluid mx-auto d-block mb-3 w-25">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
