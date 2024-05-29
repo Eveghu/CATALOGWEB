@@ -65,44 +65,7 @@ namespace CATALOGWEB.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Roles()
-        {
-            List<Rol> lista = _DBcontext.Rols.ToList();
-            return View(lista);
-        }
-
-        [HttpGet]
-        public IActionResult Rol_Detalle(int IdRol)
-        {
-            RolVM oRolVM = new RolVM()
-            {
-
-                oRol = new Rol(),
-
-            };
-            if (IdRol != 0)
-            {
-                oRolVM.oRol = _DBcontext.Rols.Find(IdRol);
-            }
-            return View(oRolVM);
-        }
-
-        [HttpPost]
-        public IActionResult Rol_Detalle(RolVM oRolVM)
-        {
-            if (oRolVM.oRol.Idr == 0)
-            {
-                _DBcontext.Rols.Add(oRolVM.oRol);
-
-            }
-
-            else
-            {
-                _DBcontext.Rols.Update(oRolVM.oRol);
-            }
-            _DBcontext.SaveChanges();
-            return RedirectToAction("Index", "Home", "Roles");
-        }
+      
         [HttpGet]
         public IActionResult Eliminar(int IdUsuario)
         {
@@ -126,29 +89,6 @@ namespace CATALOGWEB.Controllers
             }
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public IActionResult Eliminarol(int IdRol)
-        {
-            Rol oRol = _DBcontext.Rols.FirstOrDefault(r => r.Idr == IdRol);
-            return View(oRol);
-        }
-
-        [HttpPost]
-        public IActionResult Eliminarol(Rol oRol)
-        {
-
-            var rol = _DBcontext.Rols.Find(oRol.Idr);
-            if (rol != null)
-            {
-                _DBcontext.Rols.Remove(rol);
-                _DBcontext.SaveChanges();
-                TempData["SuccessMessage"] = "¡USUARIO ELIMINADO EXITOSAMENTE!";
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "USUARIO NO ENCONTRADO.";
-            }
-            return RedirectToAction("Index");
-        }
+        
     }
 }
