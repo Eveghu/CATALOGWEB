@@ -144,8 +144,13 @@ else
                                         <td>@item.Genero</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                            <a class="btn btn-primary btn-sm mr-2" asp-action="Index" asp-controller="Home" asp-route-idUsuario="@item.Idu">EDITAR</a>
-                                            <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-controller="Home" asp-route-idUsuario="@item.Idu">ELIMINAR</a>
+                                            <a class="btn btn-primary btn-sm mr-2" asp-action="Index" asp-controller="Home" asp-route-idUsuario="@item.Idu" >EDITAR</a>
+
+                                                <form asp-action="Eliminar" asp-controller="Home" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                                                    <input type="hidden" name="Idu" value="@item.Idu" />
+                                                    <button type="submit" class="btn btn-danger btn-sm">ELIMINAR</button>
+                                                </form>
+
                                         
                                           
                                         
