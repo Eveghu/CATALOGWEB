@@ -25,26 +25,31 @@ else
                                     <div class="mb-3">
                                         <label class="form-label" asp-for="oUsuario.Nombre">NOMBRE</label>
                                         <input class="form-control" asp-for="oUsuario.Nombre" type="text" />
+                                        <span asp-validation-for="oUsuario.Nombre" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" asp-for="oUsuario.Correo">EMAIL</label>
                                         <input class="form-control" asp-for="oUsuario.Correo" type="text" />
+                                        <span asp-validation-for="oUsuario.Correo" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div style="display: flex; gap: 20px;">
                                     <div class="mb-3">
                                         <label class="form-label" asp-for="oUsuario.Contraseña">CONTRASEÑA</label>
-                                        <input class="form-control" asp-for="oUsuario.Contraseña" type="password" />
+                                        <input class="form-control" asp-for="oUsuario.Contraseña" type="text" />
+                                        <span asp-validation-for="oUsuario.Contraseña" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" asp-for="oUsuario.Curp">CURP</label>
                                         <input class="form-control" asp-for="oUsuario.Curp" type="text" />
+                                        <span asp-validation-for="oUsuario.Curp" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div style="display: flex; gap: 20px;">
                                     <div class="mb-3">
                                         <label class="form-label" asp-for="oUsuario.Edad">EDAD</label>
                                         <input class="form-control" asp-for="oUsuario.Edad" type="text" />
+                                        <span asp-validation-for="oUsuario.Edad" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">GÉNERO</label>
@@ -55,6 +60,8 @@ else
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="oUsuario.Genero" id="generoMasculino" value="M" asp-for="oUsuario.Genero">
                                             <label class="form-check-label" for="generoMasculino">Masculino</label>
+                                            <span asp-validation-for="oUsuario.Genero" class="text-danger"></span>
+
                                         </div>
                                     </div>
                                 </div>
@@ -63,6 +70,8 @@ else
                                     <select class="form-control" asp-for="oUsuario.Idr" asp-items="@Model.oListaRol">
                                         <option selected disabled>--Seleccionar--</option>
                                     </select>
+                                    <span asp-validation-for="oUsuario.oRol" class="text-danger"></span>
+
                                 </div>
                             </div>
 

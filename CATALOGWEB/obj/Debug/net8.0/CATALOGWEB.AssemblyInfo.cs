@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CATALOGWEB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4376fd90a18aed6397de2013380d442dbcf8ff4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f89a09119f99736fe41d6d66d730322609feec33")]
 [assembly: System.Reflection.AssemblyProductAttribute("CATALOGWEB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CATALOGWEB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -251,3 +251,4 @@ C:\Users\evegh\source\repos\CATALOGWEB\CATALOGWEB\bin\Debug\net8.0\runtimes\win\
 C:\Users\evegh\source\repos\CATALOGWEB\CATALOGWEB\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\evegh\source\repos\CATALOGWEB\CATALOGWEB\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\evegh\source\repos\CATALOGWEB\CATALOGWEB\obj\Debug\net8.0\CATALOGWEB.sourcelink.json
+C:\Users\evegh\source\repos\CATALOGWEB\CATALOGWEB\bin\Debug\net8.0\FluentValidation.dll

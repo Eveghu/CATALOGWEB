@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Z1U3+0Avn4OJ/w4mngE5uerG9nYId1dLIaPPI88yOjUCAEVWUzb5sRjW/AApWEm9fcmvNEJIpAuXqiMcG8Oh4w==",
+  "dgSpecHash": "gPFcIsgRqBAmoqe4JJWMsy9b6ehwjwDCEwOR3BVD0/CazBSFJW/Wfxj1ocx3wucCIQDfvuANR7VvpQyKz2MU6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\evegh\\source\\repos\\CATALOGWEB\\CATALOGWEB\\CATALOGWEB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\evegh\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\evegh\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\evegh\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
     "C:\\Users\\evegh\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\evegh\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\evegh\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
