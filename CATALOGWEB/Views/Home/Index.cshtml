@@ -1,34 +1,150 @@
-﻿@{
-    ViewData["Title"] = "Inicio";
+﻿@model CATALOGWEB.Models.ViewModels.UsuarioVM
+
+@{
+    ViewData["Title"] = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #069f4b;">
-    <div class="container">
-        <a class="navbar-brand text-uppercase mx-auto" href="#">EISEI INNOVATION</a>
-    </div>
-</nav>
-
+@if (Model.oUsuario.Idu == 0)
+{
+    <h1 class="text-center">CREAR USUARIO</h1>
+}
+else
+{
+    <h1 class="text-center">EDITAR USUARIO</h1>
+}
 <div class="container mt-5">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-5 text-center mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-body">
-                    <a asp-action="Roles" asp-controller="Home" class="text-decoration-none">
-                        <h3 class="card-title text-uppercase">ROLES</h3>
-                        <img src="~/images/roles.png" alt="" class="img-fluid mx-auto d-block mb-3 w-25">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 text-center mb-4">
-            <div class="card shadow">
-                <div class="card-body">
-                    <a asp-action="Usuarios" asp-controller="Home" class="text-decoration-none">
-                        <h3 class="card-title text-uppercase">USUARIOS</h3>
-                        <img src="~/images/usuarios.png" alt="" class="img-fluid mx-auto d-block mb-3 w-25">
-                    </a>
+                    <form asp-action="Index" asp-controller="Home" method="post">
+                        <input type="hidden" asp-for="oUsuario.Idu" />
+                        <div class="container" style="max-width: 400px; margin: auto;">
+                            <div style="display: flex; flex-direction: column;">
+                                <div style="display: flex; gap: 20px;">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="oUsuario.Nombre">NOMBRE</label>
+                                        <input class="form-control" asp-for="oUsuario.Nombre" type="text" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="oUsuario.Correo">EMAIL</label>
+                                        <input class="form-control" asp-for="oUsuario.Correo" type="text" />
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 20px;">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="oUsuario.Contraseña">CONTRASEÑA</label>
+                                        <input class="form-control" asp-for="oUsuario.Contraseña" type="password" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="oUsuario.Curp">CURP</label>
+                                        <input class="form-control" asp-for="oUsuario.Curp" type="text" />
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 20px;">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="oUsuario.Edad">EDAD</label>
+                                        <input class="form-control" asp-for="oUsuario.Edad" type="text" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">GÉNERO</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="oUsuario.Genero" id="generoFemenino" value="F" asp-for="oUsuario.Genero">
+                                            <label class="form-check-label" for="generoFemenino">Femenino</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="oUsuario.Genero" id="generoMasculino" value="M" asp-for="oUsuario.Genero">
+                                            <label class="form-check-label" for="generoMasculino">Masculino</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3" style="display: flex; gap: 20px;">
+                                    <label class="form-label" asp-for="oUsuario.Idr">ROL</label>
+                                    <select class="form-control" asp-for="oUsuario.Idr" asp-items="@Model.oListaRol">
+                                        <option selected disabled>--Seleccionar--</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3">
+                                @if (Model.oUsuario.Idu == 0)
+                                {
+                                    <button class="btn btn-success btn-sm px-4" type="submit" style="background-color: #069f4b; border-color: #069f4b; color: black;">CREAR</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary btn-sm px-4" type="submit">ACTUALIZAR</button>
+                                }
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- Sección para la tabla de usuarios -->
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-12">
+            <div class="text-center mb-4">
+                <h1 class="display-4">CATÁLOGO DE USUARIOS</h1>
+            </div>
+            <div class="card shadow">
+                <div class="card-body">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @TempData["SuccessMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>CORREO</th>
+                                    <th>CONTRASEÑA</th>
+                                    <th>CURP</th>
+                                    <th>EDAD</th>
+                                    <th>ROL</th>
+                                    <th>GÉNERO</th>
+                                    <th>OPCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Usuarios)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Correo</td>
+                                        <td>@item.Contraseña</td>
+                                        <td>@item.Curp</td>
+                                        <td>@item.Edad</td>
+                                       
+                                            <td>@item.oRol.Rol1</td>
+                                       
+                                        <td>@item.Genero</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                            <a class="btn btn-primary btn-sm mr-2" asp-action="Index" asp-controller="Home" asp-route-idUsuario="@item.Idu">EDITAR</a>
+                                            <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-controller="Home" asp-route-idUsuario="@item.Idu">ELIMINAR</a>
+                                        
+                                          
+                                        
+                        </div>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>

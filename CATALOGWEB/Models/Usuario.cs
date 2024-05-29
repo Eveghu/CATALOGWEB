@@ -20,4 +20,6 @@ public partial class Usuario
     public int? Idr { get; set; }
 
     public virtual Rol? oRol { get; set; }
+    public string Contraseña { get; set; }
+
 }
