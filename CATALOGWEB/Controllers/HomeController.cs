@@ -25,7 +25,7 @@ namespace CATALOGWEB.Controllers
         {
             var lista = _DBcontext.Usuarios
                                  .FromSqlRaw("EXEC ConsultarUsuariosActivos")
-                                 .AsEnumerable() // Ejecutar la consulta en la base de datos y convertir los resultados en una lista en el lado del cliente
+                                 .AsEnumerable() 
                          .ToList();
 
             return View(lista);
@@ -48,7 +48,7 @@ namespace CATALOGWEB.Controllers
 
             oUsuarioVM.Usuarios = _DBcontext.Usuarios
                                  .FromSqlRaw("EXEC ConsultarUsuariosActivos")
-                                 .AsEnumerable() // Ejecutar la consulta en la base de datos y convertir los resultados en una lista en el lado del cliente
+                                 .AsEnumerable() 
                          .ToList();
 
             //oUsuarioVM.Usuarios = _DBcontext.Usuarios.Include(u => u.oRol).ToList();
