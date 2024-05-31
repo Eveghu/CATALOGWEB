@@ -1,0 +1,38 @@
+﻿@model CATALOGWEB.Models.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <h1 class="text-center">CATÁLOGO WEB</h1>
+    <br />
+    <h2 class="text-center">Iniciar Sesión</h2>
+
+    <div class="row mt-5">
+        <div class="col-sm-4 offset-sm-4">
+            <form asp-controller="Acceso" asp-action="Index" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">CORREO ELECTRÓNICO</label>
+                    <input type="email" class="form-control" asp-for="Correo">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">CONTRASEÑA</label>
+                    <input type="password" class="form-control" asp-for="Contraseña">
+                </div>
+                <div style="text-align: center;">
+                    <button class="btn btn-success btn-sm px-4" type="submit" style="background-color: #069f4b; border-color: #069f4b; color: white;">INGRESAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

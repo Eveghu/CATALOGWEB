@@ -1,0 +1,44 @@
+﻿@model List<CATALOGWEB.Models.Usuario>
+
+@{
+    ViewData["Title"] = "USUARIOS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">CATÁLOGO DE USUARIOS</h1>
+</div>
+<div class="card shadow mx-auto" style="max-width: 800px;">
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-3">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>CORREO</th>
+                        <th>CURP</th>
+                        <th>EDAD</th>
+                        <th>ROL</th>
+                        <th>GÉNERO</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nombre</td>
+                            <td>@item.Correo</td>
+                            <td>@item.Curp</td>
+                            <td>@item.Edad</td>
+                            <td>@item.oRol.Rol1</td>
+                            <td>@item.Genero</td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+     

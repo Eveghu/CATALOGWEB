@@ -10,8 +10,9 @@ public partial class Usuario
         public int Idu { get; set; }
 
         [Required(ErrorMessage = "ESTE CAMPO ES OBLIGATORIO.")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "EL CAMPO NOMBRE NO PUEDE CONTENER NÚMEROS.")]
-        public string? Nombre { get; set; }
+    [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$", ErrorMessage = "EL CAMPO NOMBRE NO PUEDE CONTENER NÚMEROS.")]
+
+    public string? Nombre { get; set; }
 
         [Required(ErrorMessage = "ESTE CAMPO ES OBLIGATORIO")]
         [EmailAddress(ErrorMessage = "FORMATO DE CORREO ELECTRÓNICO INVÁLIDO")]
@@ -36,6 +37,6 @@ public partial class Usuario
 
     [Required(ErrorMessage = "ESTE CAMPO ES OBLIGATORIO")]
     public string Contraseña { get; set; }
-    
+    public bool Activo { get; set; }
 }
 

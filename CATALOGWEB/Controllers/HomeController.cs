@@ -5,10 +5,11 @@ using CATALOGWEB.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.Data.SqlClient;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace CATALOGWEB.Controllers
 {
+   /* [Authorize]*/
     public class HomeController : Controller
     {
         private readonly CatwebContext _DBcontext;
@@ -17,7 +18,15 @@ namespace CATALOGWEB.Controllers
         {
             _DBcontext = context;
         }
+
+        [Authorize(Roles = "Invitado")]
+        public IActionResult Usuarios()
+        {
+            List<Usuario> lista = _DBcontext.Usuarios.Include(c => c.oRol).ToList();
+            return View(lista);
+        }
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Index(int IdUsuario)
         {
             UsuarioVM oUsuarioVM = new UsuarioVM()
@@ -43,6 +52,7 @@ namespace CATALOGWEB.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Index(UsuarioVM oUsuarioVM)
         {
             oUsuarioVM.oListaRol = _DBcontext.Rols.Select(rol => new SelectListItem()
@@ -65,30 +75,32 @@ namespace CATALOGWEB.Controllers
             return RedirectToAction("Index");
         }
 
-      
+
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
+
         public IActionResult Eliminar(int IdUsuario)
         {
-            Usuario oUsuario = _DBcontext.Usuarios.Include(r => r.oRol).Where(u => u.Idu == IdUsuario).FirstOrDefault();
+            Usuario oUsuario = _DBcontext.Usuarios.FirstOrDefault(u => u.Idu == IdUsuario);
             return View(oUsuario);
         }
+
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
+
         public IActionResult Eliminar(Usuario oUsuario)
         {
-
-            var usuario = _DBcontext.Usuarios.Find(oUsuario.Idu);
-            if (usuario != null)
+            try
             {
-                _DBcontext.Usuarios.Remove(usuario);
-                _DBcontext.SaveChanges();
-                TempData["SuccessMessage"] = "¡USUARIO ELIMINADO EXITOSAMENTE!";
+                _DBcontext.Database.ExecuteSqlRaw("EXEC ELI @IDU", new SqlParameter("@IDU", oUsuario.Idu));
+                TempData["SuccessMessage"] = "Usuario eliminado exitosamente.";
             }
-            else
+            catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "USUARIO NO ENCONTRADO.";
+                TempData["ErrorMessage"] = "Error al eliminar el usuario.";
             }
             return RedirectToAction("Index");
         }
-        
+
     }
 }
