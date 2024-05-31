@@ -19,18 +19,25 @@ namespace CATALOGWEB.Controllers
             _DBcontext = context;
         }
 
+
         [Authorize(Roles = "Invitado")]
         public IActionResult Usuarios()
         {
-            List<Usuario> lista = _DBcontext.Usuarios.Include(c => c.oRol).ToList();
+            var lista = _DBcontext.Usuarios
+                                 .FromSqlRaw("EXEC ConsultarUsuariosActivos")
+                                 .AsEnumerable() // Ejecutar la consulta en la base de datos y convertir los resultados en una lista en el lado del cliente
+                         .ToList();
+
             return View(lista);
         }
+
         [HttpGet]
         [Authorize(Roles = "Administrador")]
         public IActionResult Index(int IdUsuario)
         {
             UsuarioVM oUsuarioVM = new UsuarioVM()
             {
+
                 oUsuario = new Usuario(),
                 oListaRol = _DBcontext.Rols.Select(rol => new SelectListItem()
                 {
@@ -39,7 +46,12 @@ namespace CATALOGWEB.Controllers
                 }).ToList()
             };
 
-            oUsuarioVM.Usuarios = _DBcontext.Usuarios.Include(u => u.oRol).ToList();
+            oUsuarioVM.Usuarios = _DBcontext.Usuarios
+                                 .FromSqlRaw("EXEC ConsultarUsuariosActivos")
+                                 .AsEnumerable() // Ejecutar la consulta en la base de datos y convertir los resultados en una lista en el lado del cliente
+                         .ToList();
+
+            //oUsuarioVM.Usuarios = _DBcontext.Usuarios.Include(u => u.oRol).ToList();
 
             if (IdUsuario != 0)
             {
@@ -78,7 +90,6 @@ namespace CATALOGWEB.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Administrador")]
-
         public IActionResult Eliminar(int IdUsuario)
         {
             Usuario oUsuario = _DBcontext.Usuarios.FirstOrDefault(u => u.Idu == IdUsuario);
@@ -87,7 +98,6 @@ namespace CATALOGWEB.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrador")]
-
         public IActionResult Eliminar(Usuario oUsuario)
         {
             try
@@ -97,10 +107,12 @@ namespace CATALOGWEB.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Error al eliminar el usuario.";
+                TempData["ErrorMessage"] = "Error al eliminar el usuario: " + ex.Message;
             }
             return RedirectToAction("Index");
         }
+    
 
-    }
+}
+   
 }

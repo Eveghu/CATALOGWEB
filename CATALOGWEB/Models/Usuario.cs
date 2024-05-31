@@ -37,6 +37,6 @@ public partial class Usuario
 
     [Required(ErrorMessage = "ESTE CAMPO ES OBLIGATORIO")]
     public string Contraseña { get; set; }
-    public bool Activo { get; set; }
+    public bool Activo { get; set; } = true;
 }
 
