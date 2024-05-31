@@ -10,7 +10,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         option.LoginPath = "/Acceso/Index";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-        option.AccessDeniedPath = "/Acces/Index";
+        option.AccessDeniedPath = "/Home/Usuarios";
     });
 builder.Services.AddDbContext<CatwebContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL"))

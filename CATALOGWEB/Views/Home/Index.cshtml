@@ -78,11 +78,11 @@ else
                             <div class="d-flex justify-content-center mt-3">
                                 @if (Model.oUsuario.Idu == 0)
                                 {
-                                    <button class="btn btn-success btn-sm px-4" type="submit" style="background-color: #069f4b; border-color: #069f4b; color: white;">CREAR</button>
+                                    <button class="btn btn-success btn-sm px-4 rounded-pill" type="submit" style="background-color: #069f4b; border-color: #069f4b; color: white;">CREAR</button>
                                 }
                                 else
                                 {
-                                    <button class="btn btn-primary btn-sm px-4" type="submit">ACTUALIZAR</button>
+                                    <button class="btn btn-primary btn-sm px-4 rounded-pill" type="submit">ACTUALIZAR</button>
                                 }
                             </div>
 
@@ -144,11 +144,11 @@ else
                                         <td>@item.Genero</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                            <a class="btn btn-primary btn-sm mr-2" asp-action="Index" asp-controller="Home" asp-route-idUsuario="@item.Idu" >EDITAR</a>
+                                                <a class="btn btn-primary btn-sm rounded-pill mr-2" asp-action="Index" asp-controller="Home" asp-route-idUsuario="@item.Idu">EDITAR</a>
 
                                                 <form asp-action="Eliminar" asp-controller="Home" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                                                     <input type="hidden" name="Idu" value="@item.Idu" />
-                                                    <button type="submit" class="btn btn-danger btn-sm">ELIMINAR</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm rounded-pill">ELIMINAR</button>
                                                 </form>
 
                                         

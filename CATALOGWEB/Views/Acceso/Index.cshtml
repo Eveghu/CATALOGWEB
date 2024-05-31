@@ -5,34 +5,81 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>LOGIN</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión - Catálogo Web</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form .form-label {
+            font-weight: bold;
+        }
+
+        .login-form .form-control {
+            border-radius: 20px;
+        }
+
+        .login-form .btn-login {
+            background-color: #069f4b;
+            border-color: #069f4b;
+            color: #ffffff;
+            border-radius: 20px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="text-center">CATÁLOGO WEB</h1>
-    <br />
-    <h2 class="text-center">Iniciar Sesión</h2>
-
-    <div class="row mt-5">
-        <div class="col-sm-4 offset-sm-4">
-            <form asp-controller="Acceso" asp-action="Index" method="post">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">CORREO ELECTRÓNICO</label>
-                    <input type="email" class="form-control" asp-for="Correo">
+    <div class="container mt-5">
+        <div class="container mt-5">
+            <h1 class="page-header">CATÁLOGO WEB</h1>
+            <div class="login-container">
+                <div class="login-container">
+            <h1 class="login-title">Iniciar Sesión</h1>
+            <form asp-controller="Acceso" asp-action="Index" method="post" class="login-form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id=""  asp-for="Correo">
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">CONTRASEÑA</label>
-                    <input type="password" class="form-control" asp-for="Contraseña">
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="" asp-for="Contraseña">
                 </div>
-                <div style="text-align: center;">
-                    <button class="btn btn-success btn-sm px-4" type="submit" style="background-color: #069f4b; border-color: #069f4b; color: white;">INGRESAR</button>
-                </div>
+                <button type="submit" class="btn btn-login">Ingresar</button>
             </form>
         </div>
     </div>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shC3MS6s68viX4z2+x4x4nF5dA/KJ0bd4iSnj" crossorigin="anonymous"></script>
 </body>
 </html>
