@@ -88,6 +88,7 @@ else
 
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -125,6 +126,7 @@ else
                                     <th>CURP</th>
                                     <th>EDAD</th>
                                     <th>GÉNERO</th>
+                                    <th>ROL</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
@@ -138,6 +140,7 @@ else
                                         <td>@item.Curp</td>
                                         <td>@item.Edad</td>
                                         <td>@item.Genero</td>
+                                        <td>@item.Idr</td>
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <a class="btn btn-primary btn-sm rounded-pill mr-2" asp-action="Index" asp-controller="Home" asp-route-idUsuario="@item.Idu">EDITAR</a>

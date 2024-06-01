@@ -84,6 +84,7 @@ namespace CATALOGWEB.Controllers
                 TempData["SuccessMessage"] = "¡USUARIO ACTUALIZADO EXITOSAMENTE!";
             }
             _DBcontext.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -103,11 +104,11 @@ namespace CATALOGWEB.Controllers
             try
             {
                 _DBcontext.Database.ExecuteSqlRaw("EXEC ELI @IDU", new SqlParameter("@IDU", oUsuario.Idu));
-                TempData["SuccessMessage"] = "Usuario eliminado exitosamente.";
+                TempData["SuccessMessage"] = "¡USUARIO ELIMINADO EXITOSAMENTE!";
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Error al eliminar el usuario: " + ex.Message;
+                TempData["ErrorMessage"] = "ERROR AL ELIMINAR EL USUARIO: " + ex.Message;
             }
             return RedirectToAction("Index");
         }
